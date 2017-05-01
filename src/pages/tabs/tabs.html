@@ -1,0 +1,58 @@
+<ion-menu [content]="mycontent">
+	<ion-content>
+		<div class="">
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4>
+						<ion-avatar>
+							<img *ngIf="api.user.imagen != null" [src]="api.user.imagen" class="img-circle" style="height:50px">
+						</ion-avatar>
+					</ion-col>
+					<ion-col col-auto>
+						<h4>{{api.user.nombre}}</h4>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</div>
+		<ion-list>
+			<button ion-item menuClose (click)="openBuscador()">
+            <ion-icon name="search" color="primary" item-right></ion-icon> Buscar
+        </button>
+			<button ion-item menuClose (click)="MisTickets()">
+            <ion-icon name="pricetag" item-right color="primary"></ion-icon> Mis Casos
+        </button>
+			<button ion-item menuClose (click)="TicketTodos()">
+            <ion-icon name="pricetag" item-right color="primary"></ion-icon> Todos Los Casos
+        </button>
+			<!-- <button ion-item menuClose  disabled>
+            <ion-icon name="pricetag" item-right color="primary" ></ion-icon> Casos Abiertos
+        </button> -->
+			<button ion-item menuClose (click)="Calendar()">
+            <ion-icon name="calendar" item-right color="primary" ></ion-icon> Calendario
+        </button>
+			<ion-list-header>
+				<ion-icon name="settings" item-left></ion-icon> Opciones</ion-list-header>
+			<button ion-item menuClose (click)="toNotificaciones()">
+             Notificaciones
+            <ion-badge item-right>{{api.user.notificaciones_count }}</ion-badge>
+        </button>
+			<button ion-item menuClose (click)="toLogin()">
+            <ion-icon name="log-out" item-right  color="primary"></ion-icon> Cerrar Sesión
+        </button>
+		</ion-list>
+	</ion-content>
+	<ion-footer text-center>
+		<div class="logo-header">
+			<img src="assets/img/logo-completo.png" alt="logo" style="height:75px">
+		</div>
+	</ion-footer>
+</ion-menu>
+
+
+<ion-tabs #mycontent tabsLayout="icon-top" color="primary">
+	<ion-tab [root]="tab1Root" tabTitle="Tickets" tabIcon="pricetags"></ion-tab>
+	<ion-tab [root]="tab2Root" tabTitle="Documentos" tabIcon="folder-open"></ion-tab>
+	<ion-tab *ngIf="api.user.modulos && api.user.modulos.clientes" [root]="tab4Root" tabTitle="Clientes" tabIcon="contacts"></ion-tab>
+	<ion-tab *ngIf="api.user.modulos && api.user.modulos.historias_clinicas && api.user.medico" [root]="tab3Root" tabTitle="Clínica"
+	 tabIcon="medkit"></ion-tab>
+</ion-tabs>

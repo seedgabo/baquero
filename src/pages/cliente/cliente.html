@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{cliente.full_name}}</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="filtrar()" [(ngModel)]="query" placeholder="buscar..."></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <img [src]="cliente.foto_url" class="img-circle" style="width:100px">
+        </ion-col>
+        <ion-col col-8>
+          <ion-list-header>{{cliente.full_name}}</ion-list-header>
+          <ion-item><b> NIT/Cedula :</b> {{cliente.nit.length >0 ? cliente.nit : cliente.cedula}}</ion-item>
+          <ion-item><b>Telefono: </b> {{cliente.telefono}}</ion-item>
+          <ion-item>{{cliente.direccion}}</ion-item>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card *ngIf="api.user.modulos.procesos">
+    <ion-list-header color="primary">Procesos</ion-list-header>
+    <ion-list>
+      <ion-item *ngFor="let proceso of procesos">
+        <div *ngIf="proceso.ticket != undefined">
+          <p>
+            {{proceso.ticket.titulo}}
+          </p>
+          <p color="primary" ion-text *ngIf="proceso.ticket.categoria" [innerHTML]="proceso.ticket.categoria.full_name" style="white-space:normal">
+          </p>
+        </div>
+        <span>{{proceso.radicado}} </span>
+        <button ion-button item-right clear (click)="verProceso(proceso)">VER</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngIf="api.user.modulos.consultas">
+    <ion-list-header color="primary">Consultas</ion-list-header>
+    <ion-list>
+      <ion-item *ngFor="let consulta of consultas">
+        <div *ngIf="consulta.ticket != undefined">
+          <p>
+            {{consulta.ticket.titulo}}
+          </p>
+          <p color="primary" ion-text *ngIf="consulta.ticket.categoria" [innerHTML]="consulta.ticket.categoria.full_name" style="white-space:normal">
+          </p>
+        </div>
+        {{consulta.consulta}}
+        <button ion-button item-right clear (click)="verConsulta(consulta)">VER</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card *ngIf="api.user.modulos.procesos_masivos">
+    <ion-list-header color="primary">Procesos Masivos</ion-list-header>
+    <ion-list>
+      <button ion-item (click)="verProcesoMasivo(proceso)" *ngFor="let proceso of cliente.procesos_masivos">
+                {{proceso.titulo}}
+            </button>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

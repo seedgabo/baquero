@@ -1,0 +1,32 @@
+
+<ion-header>
+
+    <ion-navbar color="secondary">
+        <ion-searchbar cancelButtonText="Cancelar" placeholder="Buscar..." [(ngModel)]="query" debounce="500"  (ionInput)="buscar()"></ion-searchbar>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div text-center *ngIf="loading">
+        <ion-spinner></ion-spinner>
+    </div>
+    <ion-list >
+        <ion-list-header color="favorite" *ngIf="tickets && tickets.length > 0">Casos</ion-list-header>
+        <ion-item text-wrap *ngFor="let ticket of tickets" (click)="openTicket(ticket)" >
+            {{ticket.titulo}} de <span *ngIf="ticket.guardian != null">{{ticket.guardian.nombre}}</span>
+            <p><b>Categoria:</b> {{ticket.categoria.nombre}}</p>
+            <ion-icon item-left [ngClass]="ticket.estado" name="information"></ion-icon>
+        </ion-item>
+
+        <ion-list-header color="favorite" *ngIf="documentos && documentos.length > 0">Documentos</ion-list-header>
+        <ion-item text-wrap *ngFor="let doc of documentos" (click)="openCategoriaDocumento(doc)">
+            {{doc.titulo}} en {{doc.categoria.nombre}}
+        </ion-item>
+
+        <ion-item *ngIf="empty">
+            <h3>No se ha encontrado ningun elemento</h3>
+        </ion-item>
+    </ion-list>
+</ion-content>

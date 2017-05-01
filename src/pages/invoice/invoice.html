@@ -1,0 +1,82 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Factura # {{invoice.id}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-6><img src="./assets/img/logo-completo.png" alt="logo"></ion-col>
+            <ion-col col-6 text-right> <span color="primary">{{ invoice.fecha  | fechar : 'd/M/Y'}}</span></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6>
+                <ion-avatar>
+                    <img src="{{invoice.cliente.foto_url}}" style="max-width:50px; min-width:40px" alt="">
+                </ion-avatar>
+            </ion-col>
+            <ion-col col-6>
+                {{invoice.cliente.full_name}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12 text-center>
+                <p text-center  [innerHTML]="invoice.cabecera"></p><br>
+                <p text-center>{{invoice.telefono}}</p><br>
+                <b text-center>Factura # {{invoice.id}}</b><br>
+                <b text-center>Fecha de Vencimiento: {{ invoice.vencimiento  | fechar : 'd/M/Y'}}</b><br>
+                <b text-center>Estado de la Factura: {{ invoice.estado }}</b><br>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <!-- <ion-scroll scrollX="true" style="width: 100%; height: 100%"> -->
+                <table>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>Artículo/Servicio</th>
+                        <th>Referencia</th>
+                        <th>Valor</th>
+                        <th>SubTotal</th>
+                    </tr>
+                    <tr *ngFor="let item of invoice.items">
+                        <td>{{item.cantidad}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.precio | currency:'USD':true:'1.2-2' }}</td>
+                        <td>{{ subtotal(item) | currency:'USD':true:'1.2-2'  }}</td>
+                    </tr>
+                </table>
+            <!-- </ion-scroll> -->
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-card>
+                    <h4>Notas:</h4>
+                    <div [innerHTML]="invoice.nota"></div>
+                    <div [innerHTML]="invoice.pie"></div>
+                </ion-card>
+            </ion-col>
+            <ion-col>
+                <ion-card>
+                    <h4>Total a pagar:</h4>
+                    <ion-item>
+                        <b>Subtotal: </b> <span text-right>{{invoice.sub_total | currency:'USD':true:'1.2-2'}}</span><br>
+                        <b>IVA(16%): </b> <span text-right>{{invoice.sub_total*0.16 | currency:'USD':true:'1.2-2'}}</span><br>
+                        <b>Total: </b> <span text-right>{{invoice.total | currency:'USD':true:'1.2-2'}}</span><br>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+    <button ion-button block color="primary">Descargar PDF</button>
+    <button ion-button block color="secondary">Reportar el Pago</button>
+    <button ion-button block color="light">Ver en Web</button>
+
+</ion-content>

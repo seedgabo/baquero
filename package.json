@@ -1,0 +1,58 @@
+{
+  "name": "ionic-hello-world",
+  "author": "Ionic Framework",
+  "homepage": "http://ionicframework.com/",
+  "private": true,
+  "scripts": {
+    "ionic:build": "ionic-app-scripts build",
+    "ionic:serve": "ionic-app-scripts serve"
+  },
+  "dependencies": {
+    "@angular/common": "4.0.0",
+    "@angular/compiler": "4.0.0",
+    "@angular/compiler-cli": "4.0.0",
+    "@angular/core": "4.0.0",
+    "@angular/forms": "4.0.0",
+    "@angular/http": "4.0.0",
+    "@angular/platform-browser": "4.0.0",
+    "@angular/platform-browser-dynamic": "4.0.0",
+    "@ionic-native/camera": "^3.6.1",
+    "@ionic-native/code-push": "^3.6.1",
+    "@ionic-native/core": "^3.6.1",
+    "@ionic-native/file-chooser": "^3.6.1",
+    "@ionic-native/in-app-browser": "^3.6.1",
+    "@ionic-native/push": "^3.6.1",
+    "@ionic-native/splash-screen": "^3.6.1",
+    "@ionic-native/status-bar": "^3.6.1",
+    "@ionic-native/transfer": "^3.6.1",
+    "@ionic/storage": "^2.0.1",
+    "angular2-moment": "^1.1.0",
+    "ionic-angular": "3.0.1",
+    "ionicons": "3.0.0",
+    "laravel-echo": "^1.2.3",
+    "moment": "^2.18.1",
+    "rxjs": "5.1.1",
+    "sw-toolbox": "3.4.0",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "1.3.0",
+    "typescript": "~2.2.1"
+  },
+  "description": "newtonApp: An Ionic project",
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard",
+    "phonegap-plugin-push",
+    "cordova-plugin-inappbrowse",
+    "cordova-plugin-file-opener2",
+    "cordova-plugin-file-transfer",
+    "com.jcesarmobile.filepicker",
+    "com.megster.cordova.FileChooser"
+  ],
+  "cordovaPlatforms": []
+}

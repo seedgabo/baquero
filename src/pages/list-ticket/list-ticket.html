@@ -1,0 +1,8 @@
+<button ion-item (click)="navigate(ticket)">
+    <ion-icon item-left [ngClass]="ticket.estado" name="information-circle"></ion-icon>
+    <h3 text-center text-uppercase> {{ticket.titulo}} </h3>
+    <small ><b color="primary">Usuario: </b> <span *ngIf="ticket.user != undefined">{{ticket.user.nombre}} </span> </small><br>
+    <small ><b color="secondary">Responsable:</b> <span *ngIf="ticket.guardian != undefined"> {{ticket.guardian.nombre}} </span></small>
+    <ion-badge item-right>{{ticket.comentarios_count}}</ion-badge>
+    <p text-right>Vence: {{fechar(ticket.vencimiento)}}</p>
+</button>
