@@ -13,7 +13,7 @@ export class Api {
     username: string;
     password: string;
     token: string;
-    url: string = 'http://newton.eycproveedores.com/newton/public/';
+    url: string = 'http://newton.eycproveedores.com/baquero/public/';
     // url:string = 'http://localhost/newton/public/' ;
     user: any = { token: null };
     pushData: any;
