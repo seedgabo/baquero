@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.seedg.newtonapp363174" version="1.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Newton App</name>
+<widget id="com.seedg.baquero" version="1.2.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Baquero App</name>
     <description>Tu empresa en tu bolsillo</description>
     <author email="seedgabo@gmail.com" href="http://eycproveedores.com/">Newton Developer Team</author>
     <content src="index.html" />
@@ -37,10 +37,10 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <platform name="android">
-        <preference name="CodePushDeploymentKey" value="RYINqd8vn26wpxfEOOnRNvFBAR8JNJcVZfbEf" />
+        <preference name="CodePushDeploymentKey" value="PLesKgwL1D1XcOzEG1eeaebw-mOqNJcVZfbEf" />
     </platform>
     <platform name="ios">
-        <preference name="CodePushDeploymentKey" value="fILz6tfF5r2NyjzLDf5f2RH9TVhSNJcVZfbEf" />
+        <preference name="CodePushDeploymentKey" value="EanTd-y2anJ_6rFw_75TyVjLPAKnNJcVZfbEf" />
     </platform>
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
